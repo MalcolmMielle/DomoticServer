@@ -18,31 +18,50 @@ Basic conventions :
 
 '''
 
-class PriseArduino(object):
+#Base Object class
+class BaseObject(object):
+	def __init__(self):
+		if type(self) == BaseObject:
+			raise Exception("AbstractClass is an abstract class and cannot be instantiated.")
+	
+	def write(self, address, order):
+		raise NotImplementedError
+
+
+class PriseArduino(BaseObject):
 	def __init__(self, nbOfPlug):
 		self.nbOfPlug=nbOfPlug
 		
 	#Return the formated order that the plug can understand
-	def write(self, plug, order):
-		return str(plug)+";"+str(order)
+	def write(self, address, order):
+		return str(address)+";"+str(order)
 	
 	
 
 
 class ServerDomotique(object):
 	def __init__(self):
+		self._logger = logging.getLogger(__name__)
 		self.instance=list()
-		self.instance.append(NRFinstance())
+		self.instance.append(NRFinstance(self._logger))
 		
+	
+	#TODO test function
+	def getAllObject(self):
+		all=list()
+		for instance in self.instance:
+			all=all+instance.obj
+		return all
 	
 	def testing(self):
 		for instance in self.instance:
+			self._logger.info("Testing instance "+str(instance))
 			instance.testing()
 		
 	
 class NRFinstance(object):
-	def __init__(self):
-		self._logger = logging.getLogger(__name__)
+	def __init__(self,_loger):
+		self._logger =_loger
 		self.flag=0
 		self.obj=list()
 		
@@ -54,11 +73,18 @@ class NRFinstance(object):
 		
 	def write(self, order):
 		for obj in self.obj:
-			if isinstance(obj, PriseArduino):
-				self._logger.info("Working with a Prise Arduino")
+			try:
+				isinstance(obj,BaseObject)
+			except:
+				self._logger.error(type(obj) +" did not enerited from BaseObject")
+				raise
+			try:
+				self._logger.info("Working with a "+type(obj).__name__)
 				order_new=obj.write(order)
 				self._logger.info("Seding the object through NRF")
 				self.nrf.send(map,(ord,order_new))
+			except:
+				self._logger.warning("Something went wrong while using object "+type(obj))
 		
 		
 	def testing(self):
