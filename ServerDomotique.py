@@ -72,6 +72,7 @@ class NRFinstance(object):
 				if self.nrf.dataReady():
 					self._logger.info("NRF received DATA "+ str())
 					print self.nrf.getData()
+					break
 					
 				
 				
