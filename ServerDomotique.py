@@ -13,7 +13,7 @@ args = parser.parse_args()
 
 '''
 Basic conventions : 
-	Object are to a name, an address
+	Object are to be a name, an address
 	Message have to be an Object and an order
 
 '''
@@ -81,7 +81,7 @@ class NRFinstance(object):
 			try:
 				self._logger.info("Working with a "+type(obj).__name__)
 				order_new=obj.write(order)
-				self._logger.info("Seding the object through NRF")
+				self._logger.info("Sending the order : '"+order+" through NRF")
 				self.nrf.send(map,(ord,order_new))
 			except:
 				self._logger.warning("Something went wrong while using object "+type(obj))
