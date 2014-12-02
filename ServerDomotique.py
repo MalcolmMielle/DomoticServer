@@ -34,10 +34,10 @@ class ServerDomotique(object):
 					self.nrf.send(map(ord,"Helloooo"))
 					self.flag=1
 			else:
-				if self.nrf.dataReady():
-					self._logger.info("NRF received DATA")
+				result=self.nrf.dataReady()
+				if result:
+					self._logger.info("NRF received DATA "+ str(result) )
 					print self.nrf.getData()
-					self.flag=0
 					break
 				
 				
@@ -56,6 +56,7 @@ if __name__ == "__main__":
 		app=ServerDomotique()
 	except:
 		logger.exception("Error occured!", exc_info=True)
+		print "Make sure that the SPI is enable by editing : /etc/modprobe.d/raspi-blacklist.conf"
 		sys.exit(1)
 	
 	app.testingNRF()
