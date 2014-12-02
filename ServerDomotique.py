@@ -34,11 +34,10 @@ class ServerDomotique(object):
 					self.nrf.send(map(ord,"Helloooo"))
 					self.flag=1
 			else:
-				result=self.nrf.dataReady()
-				if result:
-					self._logger.info("NRF received DATA "+ str(result) )
+				if self.nrf.dataReady():
+					self._logger.info("NRF received DATA "+ str())
 					print self.nrf.getData()
-					break
+					
 				
 				
 				
