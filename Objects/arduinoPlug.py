@@ -15,7 +15,7 @@ def isExistingClass(demand):
 	return False
 
 class arduinoPlug(object):
-	def __init__(self, NB_PLUG=4, _loger=logging.getLogger(__name__)):
+	def __init__(self, NB_PLUG=1, _loger=logging.getLogger(__name__)):
 		self._logger = _loger
 		#Contains all object associated with there address (e.g the place on the plug)
 		self.arduinoPlug=list()
@@ -31,13 +31,25 @@ class arduinoPlug(object):
 			obj.id=nb
 			self.arduinoPlug.append(obj)
 		self._logger.info(self.arduinoPlug)
-		self.nrf=NRFinstance(self._logger)
+		
+		#TODO ucomment for the pi + pass it as an attribute ?
+		#self.nrf=NRFinstance(self._logger)
+
+	def send_order(self, id, order):
+		try:
+			obj=self.arduinoPlug[id]
+			order=obj.format_order(order)
+			print "sending the order "+order
+			#TODO uncomment for the pi
+			#self.nrf.write(order)
+		except Exception, e:
+			print "Error: %s" % str(e)
+			
+		
 
 	def testing(self):
 		self.nrf.testing()
-		
-	def handleforever(self):
-		pass
+	
 		
 	def __repr__(self):
 		return "arduinoPlug of size "+str(len(self.arduinoPlug))
