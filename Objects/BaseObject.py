@@ -8,5 +8,5 @@ class BaseObject(object):
 		if type(self) == BaseObject:
 			raise Exception("AbstractClass is an abstract class and cannot be instantiated.")
 	
-	def write(self, address, order):
+	def format_order(self, address, order):
 		raise NotImplementedError

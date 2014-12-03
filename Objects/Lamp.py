@@ -7,7 +7,7 @@ class Lamp(BaseObject.BaseObject):
 		self.id=str(id)
 		
 	#Return the formated order that the plug can understand
-	def write(self, order):
+	def format_order(self, order):
 		return self.id+";"+str(order)
 	
 	def __repr__(self):
