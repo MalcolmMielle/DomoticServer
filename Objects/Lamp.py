@@ -4,7 +4,13 @@ import BaseObject
 class Lamp(BaseObject.BaseObject):
 	def __init__(self, id):
 		super(Lamp, self).__init__()
-		self._id=id
+		self._id=str(id)
+		self.order=dict()
+		self.order['on']='on_arduino'
+		self.order['off']='off_arduino'
+		self.order['more']='more'
+		self.order['less']='less'
+		
 		
 	#getter
 	@property
@@ -18,7 +24,10 @@ class Lamp(BaseObject.BaseObject):
 		
 	#Return the formated order that the plug can understand
 	def format_order(self, order):
-		return self._id+";"+str(order)
+		for key in self.order:
+			if order==key:
+				return self._id+";"+str(self.order[key])	
+		raise Exception("The order was not understand for a " +type(self))
 	
 	def __repr__(self):
 		return "Lamp object of id : "+self._id

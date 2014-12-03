@@ -3,7 +3,7 @@ from CommunicationInstance.NRFcommunication import NRFinstance
 import logging
 import copy
 
-#Dictionary of available object
+#Dictionary of available object. All Object must inhertite of BaseObject
 DICT_CLASS=dict()
 DICT_CLASS['LAMP']=Lamp(1)
 
@@ -23,10 +23,12 @@ class arduinoPlug(object):
 			print 'On plug number '+str(nb)
 			input=raw_input('What object : ')
 			classtype=isExistingClass(input)
+			
 			while classtype==False:
 				print 'Wrong input'
 				input=raw_input('What object : ')
 				classtype=isExistingClass(input)
+				
 			obj=copy.copy(classtype)
 			obj.id=nb
 			self.arduinoPlug.append(obj)
