@@ -22,15 +22,6 @@ Basic conventions :
 
 '''
 
-NB_PLUG=3
-
-''' 
-	Dict example :
-	'lamp'=Lamp object, adresse =1
-	'fridge'=Fridge object, adresse = 2
-	'lamp salon'=Lamp object, adresse = 3
-'''
-
 
 class ServerDomotique(object):
 	def __init__(self):

@@ -24,7 +24,6 @@ class arduinoPlug(object):
 		print self.arduinoPlug
 		
 		self.nrf=NRFinstance(self._logger)
-		self.l=Lamp(23)
 	
 	#TODO test function
 	def getAllObject(self):
