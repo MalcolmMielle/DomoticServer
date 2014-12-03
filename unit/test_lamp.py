@@ -2,6 +2,9 @@ import random
 import unittest
 from Objects.Lamp import Lamp
 
+#To launch the test : 
+#from the unit folder : python -m unittest discover -t ..
+
 class RandomTest(unittest.TestCase):
 
 	def test_Lamp(self):
