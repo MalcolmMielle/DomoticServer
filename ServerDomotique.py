@@ -28,13 +28,13 @@ class ServerDomotique(object):
 		self._logger = logging.getLogger(__name__)
 		
 		#Contains all object associated with there address (e.g the place on the plug)
-		self.arduinoPlug=arduinoPlug(self._logger)
+		self.arduinoPlug=arduinoPlug()
 		
 		self.nrf=NRFinstance(self._logger)
 		self.l=Lamp(23)
 	
-	
-	
+	def handleforever(self):
+		pass
 	
 	
 if __name__ == "__main__":
@@ -54,5 +54,5 @@ if __name__ == "__main__":
 		print "Make sure that the SPI is enable by editing : /etc/modprobe.d/raspi-blacklist.conf"
 		sys.exit(1)
 	
-	app.testing()
+	app.handleforever()
 	

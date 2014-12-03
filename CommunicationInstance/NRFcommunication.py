@@ -1,12 +1,12 @@
-
 from nrf24 import Nrf24
 import Objects.BaseObject
 import CommunicationInstance.NRFcommunication
+import logging
 
 
 	
 class NRFinstance(object):
-	def __init__(self,_loger):
+	def __init__(self,_loger=logging.getLogger(__name__)):
 		self._logger =_loger
 		self.flag=0
 		self.obj=list()
