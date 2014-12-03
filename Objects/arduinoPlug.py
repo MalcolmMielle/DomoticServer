@@ -34,4 +34,6 @@ class arduinoPlug(object):
 
 	def testing(self):
 		self.nrf.testing()
-			
+		
+	def __repr__(self):
+		return "arduinoPlug of size "+str(len(self.arduinoPlug))
