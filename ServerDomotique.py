@@ -29,12 +29,9 @@ class ServerDomotique(object):
 		
 		#Contains all object associated with there address (e.g the place on the plug)
 		self.arduinoPlug=arduinoPlug()
-		
-		self.nrf=NRFinstance(self._logger)
-		self.l=Lamp(23)
 	
 	def handleforever(self):
-		pass
+		self.arduinoPlug.send_order(0,"on")
 	
 	
 if __name__ == "__main__":
