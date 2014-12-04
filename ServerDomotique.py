@@ -16,7 +16,6 @@ Basic conventions :
 
 Object are to be a name, an address
 Message have to be an Object and an order
-
 '''
 
 
