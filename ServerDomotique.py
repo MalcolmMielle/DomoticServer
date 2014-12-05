@@ -30,7 +30,7 @@ class ServerDomotique(object):
 	def handleforever(self):
 		self.arduinoPlug.send_order(0, "on")
 
-  
+
 if __name__ == "__main__":
 
 	print "Server Domotique started"
