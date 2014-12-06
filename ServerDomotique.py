@@ -25,10 +25,23 @@ class ServerDomotique(object):
 
 		# Contains all object associated with there address
 		# (e.g the place on the plug)
-		self.arduinoPlug = arduinoPlug()
+		plug_number = 0
+		plug_number = int(raw_input("How many plug on you arduino controlled \
+plug ? "))
+		while plug_number == 0:
+			print 'it should be more than 0'
+			plug_number = int(raw_input("How many plug on you arduino controlled \
+plug ? "))
+		self.arduinoPlug = arduinoPlug(nb_plug=plug_number)
 
 	def handleforever(self):
-		self.arduinoPlug.send_order(0, "on")
+		while True:
+			order = raw_input('what order would you like to send ? ')
+			plug = raw_input('on which plug ? ')
+			if order != "" and plug != "":
+				self.arduinoPlug.send_order(int(plug), order)
+			else:
+				break
 
 
 if __name__ == "__main__":

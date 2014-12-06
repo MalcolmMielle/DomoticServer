@@ -16,12 +16,12 @@ def isExistingClass(demand):
 
 
 class arduinoPlug(object):
-	def __init__(self, NB_PLUG=1, _loger=logging.getLogger(__name__)):
-		self._logger = _loger
+	def __init__(self, nb_plug=1):
+		self._logger = logging.getLogger(__name__)
 		# Contains all object associated with there address
 		# (e.g the place on the plug)
 		self.arduinoPlug = list()
-		for nb, ad in enumerate(range(NB_PLUG)):
+		for nb, ad in enumerate(range(nb_plug)):
 			print 'On plug number ' + str(nb)
 			input = raw_input('What object : ')
 			classtype = isExistingClass(input)
@@ -43,11 +43,11 @@ class arduinoPlug(object):
 		try:
 			obj = self.arduinoPlug[id]
 			order = obj.format_order(order)
-			print "sending the order " + order
+			self._logger.info("sending the order " + order)
 			# TODO uncomment for the pi
 			# self.nrf.write(order)
 		except Exception, e:
-			print "Error: %s" % str(e)
+			print "Error in executing send_order: %s" % str(e)
 
 	def testing(self):
 		self.nrf.testing()
