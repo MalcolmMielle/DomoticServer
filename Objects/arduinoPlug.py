@@ -16,7 +16,7 @@ def isExistingClass(demand):
 
 
 class arduinoPlug(object):
-	def __init__(self, nb_plug=1):
+	def __init__(self, nb_plug=None):
 		self._logger = logging.getLogger(__name__)
 		# Contains all object associated with there address
 		# (e.g the place on the plug)
@@ -28,6 +28,7 @@ class arduinoPlug(object):
 
 			while classtype is False:
 				print 'Wrong input'
+				print 'On plug number ' + str(nb)
 				input = raw_input('What object : ')
 				classtype = isExistingClass(input)
 
