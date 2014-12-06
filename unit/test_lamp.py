@@ -1,5 +1,6 @@
 import unittest
 from Objects.Lamp import Lamp
+from Objects.arduinoPlug import arduinoPlug
 
 # To launch the test :
 # from the unit folder : python -m unittest discover -t ..
@@ -21,3 +22,11 @@ class RandomTest(unittest.TestCase):
 
 		with self.assertRaises(Exception):
 			lamp.format_order('wrong_order')
+
+	def test_Arduino(self):
+		print 'test arduino'
+		obj = list()
+		obj.append(Lamp(0))
+		obj.append(Lamp(1))
+		ard = arduinoPlug(2, obj)
+		print ard.send_address

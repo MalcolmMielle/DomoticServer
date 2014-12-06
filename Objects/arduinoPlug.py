@@ -65,5 +65,16 @@ class arduinoPlug(object):
 	def testing(self):
 		self.nrf.testing()
 
+#TODO TEST !
+	@property
+	def reading_address(self):
+		print "returningreading adress"
+		# return self.nrf.pipes[1]
+
+	@property
+	def writing_adress(self):
+		print "returning writing adress"
+		# return self.nrf.pipes[0]
+
 	def __repr__(self):
 		return "arduinoPlug of size " + str(len(self.arduinoPlug))
