@@ -8,8 +8,8 @@ class Lamp(BaseObject.BaseObject):
 		self._logger = logging.getLogger(__name__)
 		self._id = str(id)
 		self.order = dict()
-		self.order['on'] = 'on_arduino'
-		self.order['off'] = 'off_arduino'
+		self.order['on'] = 'on'
+		self.order['off'] = 'off'
 		self.order['more'] = 'more'
 		self.order['less'] = 'less'
 

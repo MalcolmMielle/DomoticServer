@@ -18,7 +18,7 @@ class RandomTest(unittest.TestCase):
 		self.assertEqual(str(52), lamp.id)
 
 		self.assertIn('on', lamp.order)
-		self.assertEqual('52;on_arduino', lamp.format_order('on'))
+		self.assertEqual('52;on', lamp.format_order('on'))
 
 		with self.assertRaises(Exception):
 			lamp.format_order('wrong_order')

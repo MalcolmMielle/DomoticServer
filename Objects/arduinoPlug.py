@@ -65,7 +65,7 @@ class arduinoPlug(object):
 	def testing(self):
 		self.nrf.testing()
 
-#TODO TEST !
+# TODO TEST !
 	@property
 	def reading_address(self):
 		print "returningreading adress"
